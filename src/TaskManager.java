@@ -11,8 +11,8 @@ public interface TaskManager {
     void updateSubtask(Subtask subtask);
 
     Task getTask(int id);
-    Epic getEpic(int id);
-    Subtask getSubtask(int id);
+    Epic getEpic (int id);
+    Subtask getSubtask (int id);
 
     void removeTask(int id);
     void removeEpic(int id);

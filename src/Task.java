@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Task {
-    private int Id;
+    private int id;
     private String name;
     private String description;
     private TaskStatus status;
@@ -13,11 +13,11 @@ public class Task {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -51,7 +51,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
@@ -63,12 +63,12 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Id == task.Id && Objects.equals(name, task.name) && Objects.equals(description, task.description) &&
+        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) &&
                 status == task.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, name, description, status);
+        return Objects.hash(id, name, description, status);
     }
 }
