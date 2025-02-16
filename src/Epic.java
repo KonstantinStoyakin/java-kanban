@@ -1,16 +1,20 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Epic extends Task {
-
-    private final ArrayList<Integer> subtasksIds;
+    private final List<Integer> subtasksIds;
 
     public Epic(String name, String description, TaskStatus status) {
         super(name, description, status);
         this.subtasksIds = new ArrayList<>();
     }
 
-    public ArrayList<Integer> getSubtasksIds() {
+    public List<Integer> getSubtasksIds() {
         return subtasksIds;
+    }
+
+    public TaskType getType() {
+        return TaskType.EPIC;
     }
 
     public void removeSubtask(int subtaskId) {
