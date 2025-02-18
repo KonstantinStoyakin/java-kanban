@@ -9,7 +9,8 @@ class InMemoryHistoryManagerTest {
     @Test
     void testHistoryManager() {
         HistoryManager historyManager = Managers.getDefaultHistory();
-        Task task = new Task("История задач", "Описание", TaskStatus.NEW);
+        Task task = new Task("История задач", "Описание",
+                TaskStatus.NEW, null, null);
         task.setId(1);
 
         historyManager.add(task);
@@ -22,8 +23,10 @@ class InMemoryHistoryManagerTest {
     @Test
     void testLinkedListAddAndRetrieve() {
         InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
-        Task task1 = new Task("История задач", "Описание", TaskStatus.NEW);
-        Task task2 = new Task("Test Task2", "Test Description2", TaskStatus.NEW);
+        Task task1 = new Task("История задач", "Описание",
+                TaskStatus.NEW, null, null);
+        Task task2 = new Task("Test Task2", "Test Description2",
+                TaskStatus.NEW, null, null);
 
         task1.setId(1);
         task2.setId(2);
@@ -40,9 +43,12 @@ class InMemoryHistoryManagerTest {
     @Test
     void testLinkedListRemoveFromMiddle() {
         InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
-        Task task1 = new Task("Test Task1", "Test Description1", TaskStatus.NEW);
-        Task task2 = new Task("Test Task2", "Test Description2", TaskStatus.NEW);
-        Task task3 = new Task("Test Task3", "Test Description3", TaskStatus.NEW);
+        Task task1 = new Task("Test Task1", "Test Description1",
+                TaskStatus.NEW, null, null);
+        Task task2 = new Task("Test Task2", "Test Description2",
+                TaskStatus.NEW, null, null);
+        Task task3 = new Task("Test Task3", "Test Description3",
+                TaskStatus.NEW, null, null);
 
         task1.setId(1);
         task2.setId(2);
@@ -63,8 +69,10 @@ class InMemoryHistoryManagerTest {
     @Test
     void testLinkedListRemoveFirst() {
         InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
-        Task task1 = new Task("Test Task1", "Test Description1", TaskStatus.NEW);
-        Task task2 = new Task("Test Task2", "Test Description2", TaskStatus.NEW);
+        Task task1 = new Task("Test Task1", "Test Description1",
+                TaskStatus.NEW, null, null);
+        Task task2 = new Task("Test Task2", "Test Description2",
+                TaskStatus.NEW, null, null);
 
         task1.setId(1);
         task2.setId(2);

@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
+import java.util.Comparator;
 
 public class InMemoryTaskManager implements TaskManager {
 
@@ -9,6 +11,8 @@ public class InMemoryTaskManager implements TaskManager {
     protected final Map<Integer, Epic> epics = new HashMap<>();
     protected final Map<Integer, Subtask> subtasks = new HashMap<>();
     private final HistoryManager historyManager = Managers.getDefaultHistory();
+    private final TreeSet<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime,
+            Comparator.nullsLast(Comparator.naturalOrder())));
     private int nextId = 1;
 
     private int generateId() {
@@ -19,12 +23,14 @@ public class InMemoryTaskManager implements TaskManager {
     public void add(Task task) {
         task.setId(generateId());
         tasks.put(task.getId(), task);
+        prioritizedTasks.add(task);
     }
 
     @Override
     public void add(Epic epic) {
         epic.setId(generateId());
         epics.put(epic.getId(), epic);
+        prioritizedTasks.add(epic);
     }
 
     @Override
@@ -37,16 +43,20 @@ public class InMemoryTaskManager implements TaskManager {
             epic.getSubtasksIds().add(subtask.getId());
             updateEpicStatus(epic);
         }
+
+        prioritizedTasks.add(subtask);
     }
 
     @Override
     public void updateTask(Task task) {
         tasks.put(task.getId(), task);
+        prioritizedTasks.add(task);
     }
 
     @Override
     public void updateEpic(Epic epic) {
         epics.put(epic.getId(), epic);
+        prioritizedTasks.add(epic);
     }
 
     @Override
@@ -57,6 +67,8 @@ public class InMemoryTaskManager implements TaskManager {
         if (epic != null) {
             updateEpicStatus(epic);
         }
+
+        prioritizedTasks.add(subtask);
     }
 
     @Override
@@ -195,5 +207,19 @@ public class InMemoryTaskManager implements TaskManager {
             }
         }
         return subtasksList;
+    }
+
+    @Override
+    public List<Task> getPrioritizedTasks() {
+        return new ArrayList<>(prioritizedTasks);
+    }
+
+    @Override
+    public boolean isOverlapping(Task newTask) {
+        return prioritizedTasks.stream().anyMatch(existingTask ->
+                existingTask.getStartTime() != null && newTask.getStartTime() != null &&
+                        !newTask.getEndTime().isBefore(existingTask.getStartTime()) &&
+                        !newTask.getStartTime().isAfter(existingTask.getEndTime())
+        );
     }
 }
