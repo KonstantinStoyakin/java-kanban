@@ -144,7 +144,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Ошибка при загрузке файла", e);
+            throw new ManagerLoadException("Ошибка при загрузке файла", e);
         }
         return manager;
     }
