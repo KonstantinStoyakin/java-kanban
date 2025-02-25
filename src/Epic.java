@@ -48,6 +48,16 @@ public class Epic extends Task {
                 .orElse(Duration.ZERO);
     }
 
+    private LocalDateTime endTime;
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
     public LocalDateTime calculateEndTime(List<Subtask> subtasks) {
         return subtasks.stream()
                 .filter(subtask -> subtasksIds.contains(subtask.getId()))
