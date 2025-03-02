@@ -1,5 +1,5 @@
-import ENUM.TaskStatus;
-import TASK.Task;
+import enums.TaskStatus;
+import tasks.Task;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

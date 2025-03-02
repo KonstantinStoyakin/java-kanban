@@ -1,8 +1,8 @@
-package MANAGERS;
+package managers;
 
-import INTERFACE.HistoryManager;
-import TASK.Node;
-import TASK.Task;
+import interfaces.HistoryManager;
+import tasks.Node;
+import tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;

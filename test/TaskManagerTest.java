@@ -1,8 +1,8 @@
-import ENUM.TaskStatus;
-import INTERFACE.TaskManager;
-import TASK.Epic;
-import TASK.Subtask;
-import TASK.Task;
+import enums.TaskStatus;
+import interfaces.TaskManager;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;

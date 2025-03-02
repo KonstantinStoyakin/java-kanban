@@ -1,11 +1,11 @@
-package MANAGERS;
+package managers;
 
-import ENUM.TaskStatus;
-import INTERFACE.HistoryManager;
-import INTERFACE.TaskManager;
-import TASK.Epic;
-import TASK.Subtask;
-import TASK.Task;
+import enums.TaskStatus;
+import interfaces.HistoryManager;
+import interfaces.TaskManager;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;

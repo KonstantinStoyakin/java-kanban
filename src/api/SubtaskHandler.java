@@ -1,7 +1,7 @@
-package API;
+package api;
 
-import INTERFACE.TaskManager;
-import TASK.Subtask;
+import interfaces.TaskManager;
+import tasks.Subtask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpExchange;

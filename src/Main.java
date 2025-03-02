@@ -1,9 +1,9 @@
-import ENUM.TaskStatus;
-import INTERFACE.TaskManager;
-import MANAGERS.InMemoryTaskManager;
-import TASK.Epic;
-import TASK.Subtask;
-import TASK.Task;
+import enums.TaskStatus;
+import interfaces.TaskManager;
+import managers.InMemoryTaskManager;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 
 public class Main {
     public static void main(String[] args) {

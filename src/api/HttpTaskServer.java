@@ -1,7 +1,7 @@
-package API;
+package api;
 
-import INTERFACE.TaskManager;
-import MANAGERS.Managers;
+import interfaces.TaskManager;
+import managers.Managers;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;

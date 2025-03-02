@@ -1,6 +1,6 @@
-package INTERFACE;
+package interfaces;
 
-import TASK.Task;
+import tasks.Task;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package API;
+package api;
 
-import INTERFACE.TaskManager;
-import TASK.Epic;
+import interfaces.TaskManager;
+import tasks.Epic;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpExchange;

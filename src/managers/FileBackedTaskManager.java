@@ -1,12 +1,12 @@
-package MANAGERS;
+package managers;
 
-import ENUM.TaskStatus;
-import ENUM.TaskType;
-import EXCEPTION.ManagerLoadException;
-import EXCEPTION.ManagerSaveException;
-import TASK.Epic;
-import TASK.Subtask;
-import TASK.Task;
+import enums.TaskStatus;
+import enums.TaskType;
+import exceptions.ManagerLoadException;
+import exceptions.ManagerSaveException;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 
 import java.io.IOException;
 import java.io.File;
