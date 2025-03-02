@@ -1,3 +1,8 @@
+import enums.TaskStatus;
+import managers.FileBackedTaskManager;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -59,8 +64,8 @@ public class FileBackedTaskManagerTest extends TaskManagerTest<FileBackedTaskMan
         assertEquals(1, loadedManager.getEpic().size(), "Неверное количество эпиков");
         assertEquals(1, loadedManager.getSubtask().size(), "Неверное количество подзадач");
 
-        assertTrue(loadedManager.getTask().contains(task), "Task отсутствует после загрузки");
-        assertTrue(loadedManager.getEpic().contains(epic), "Epic отсутствует после загрузки");
-        assertTrue(loadedManager.getSubtask().contains(subtask), "Subtask отсутствует после загрузки");
+        assertTrue(loadedManager.getTask().contains(task), "TASK.Task отсутствует после загрузки");
+        assertTrue(loadedManager.getEpic().contains(epic), "TASK.Epic отсутствует после загрузки");
+        assertTrue(loadedManager.getSubtask().contains(subtask), "TASK.Subtask отсутствует после загрузки");
     }
 }

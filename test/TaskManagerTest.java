@@ -1,3 +1,8 @@
+import enums.TaskStatus;
+import interfaces.TaskManager;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -12,7 +17,7 @@ public abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     void taskAdditionTest() {
-        Task task = new Task("Test Task", "Test Description",
+        Task task = new Task("Test TASK.Task", "Test Description",
                 TaskStatus.NEW, null, null);
         manager.add(task);
         Task retrievedTask = manager.getTask(task.getId());
@@ -22,7 +27,7 @@ public abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     void taskDeletionTest() {
-        Task task = new Task("Test Task", "Test Description",
+        Task task = new Task("Test TASK.Task", "Test Description",
                 TaskStatus.NEW, null, null);
         manager.add(task);
         manager.removeTask(task.getId());
@@ -32,12 +37,12 @@ public abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     void testEpicStatus() {
-        Epic epic = new Epic("Epic Task", "Epic Description", TaskStatus.NEW);
+        Epic epic = new Epic("TASK.Epic TASK.Task", "TASK.Epic Description", TaskStatus.NEW);
         manager.add(epic);
 
-        Subtask subtask1 = new Subtask("Subtask 1", "Subtask Description", TaskStatus.NEW,
+        Subtask subtask1 = new Subtask("TASK.Subtask 1", "TASK.Subtask Description", TaskStatus.NEW,
                 epic.getId(), null, null);
-        Subtask subtask2 = new Subtask("Subtask 2", "Subtask Description", TaskStatus.NEW,
+        Subtask subtask2 = new Subtask("TASK.Subtask 2", "TASK.Subtask Description", TaskStatus.NEW,
                 epic.getId(), null, null);
         manager.add(subtask1);
         manager.add(subtask2);
@@ -48,12 +53,12 @@ public abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     void testEpicStatusDONE() {
-        Epic epic = new Epic("Epic Task", "Epic Description", TaskStatus.NEW);
+        Epic epic = new Epic("TASK.Epic TASK.Task", "TASK.Epic Description", TaskStatus.NEW);
         manager.add(epic);
 
-        Subtask subtask1 = new Subtask("Subtask 1", "Subtask Description", TaskStatus.DONE,
+        Subtask subtask1 = new Subtask("TASK.Subtask 1", "TASK.Subtask Description", TaskStatus.DONE,
                 epic.getId(), null, null);
-        Subtask subtask2 = new Subtask("Subtask 2", "Subtask Description", TaskStatus.DONE,
+        Subtask subtask2 = new Subtask("TASK.Subtask 2", "TASK.Subtask Description", TaskStatus.DONE,
                 epic.getId(), null, null);
         manager.add(subtask1);
         manager.add(subtask2);
@@ -64,12 +69,12 @@ public abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     void testEpicStatusMixed() {
-        Epic epic = new Epic("Epic Task", "Epic Description", TaskStatus.NEW);
+        Epic epic = new Epic("TASK.Epic TASK.Task", "TASK.Epic Description", TaskStatus.NEW);
         manager.add(epic);
 
-        Subtask subtask1 = new Subtask("Subtask 1", "Subtask Description",
+        Subtask subtask1 = new Subtask("TASK.Subtask 1", "TASK.Subtask Description",
                 TaskStatus.NEW, epic.getId(), null, null);
-        Subtask subtask2 = new Subtask("Subtask 2", "Subtask Description",
+        Subtask subtask2 = new Subtask("TASK.Subtask 2", "TASK.Subtask Description",
                 TaskStatus.DONE, epic.getId(), null, null);
         manager.add(subtask1);
         manager.add(subtask2);
@@ -80,11 +85,11 @@ public abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     void testTaskTimeIntervalsOverlap() {
-        Task task1 = new Task("Task 1", "Task Description", TaskStatus.NEW,
+        Task task1 = new Task("TASK.Task 1", "TASK.Task Description", TaskStatus.NEW,
                 Duration.ofMinutes(10),
                 LocalDateTime.of(2025, Month.FEBRUARY, 17, 10, 0));
 
-        Task task2 = new Task("Task 2", "Task Description", TaskStatus.NEW,
+        Task task2 = new Task("TASK.Task 2", "TASK.Task Description", TaskStatus.NEW,
                 Duration.ofMinutes(15),
                 LocalDateTime.of(2025, Month.FEBRUARY, 17, 10, 5));
 

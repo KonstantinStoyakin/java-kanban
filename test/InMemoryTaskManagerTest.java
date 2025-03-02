@@ -1,3 +1,8 @@
+import enums.TaskStatus;
+import managers.InMemoryTaskManager;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +17,7 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
     @Test
     void taskAdditionTest() {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
-        Task task = new Task("Test Task", "Test Description",
+        Task task = new Task("Test TASK.Task", "Test Description",
                 TaskStatus.NEW, null, null);
 
         taskManager.add(task);

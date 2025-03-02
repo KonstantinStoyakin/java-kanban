@@ -1,3 +1,8 @@
+import enums.TaskStatus;
+import interfaces.HistoryManager;
+import managers.InMemoryHistoryManager;
+import managers.Managers;
+import tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
