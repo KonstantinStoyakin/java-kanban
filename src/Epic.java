@@ -1,3 +1,5 @@
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +7,7 @@ public class Epic extends Task {
     private final List<Integer> subtasksIds;
 
     public Epic(String name, String description, TaskStatus status) {
-        super(name, description, status);
+        super(name, description, status, Duration.ZERO, null);
         this.subtasksIds = new ArrayList<>();
     }
 
@@ -26,6 +28,43 @@ public class Epic extends Task {
             throw new IllegalArgumentException("Эпик не может быть своей подзадачей.");
         }
         subtasksIds.add(subtaskId);
+    }
+
+    public LocalDateTime calculateStartTime(List<Subtask> subtasks) {
+        return  subtasks.stream()
+                .filter(subtask -> subtasksIds.contains(subtask.getId()))
+                .map(Subtask::getStartTime)
+                .filter(time -> time != null)
+                .min(LocalDateTime::compareTo)
+                .orElse(null);
+    }
+
+    public Duration calculateDuration(List<Subtask> subtasks) {
+        return subtasks.stream()
+                .filter(subtask -> subtasksIds.contains(subtask.getId()))
+                .map(Subtask::getDuration)
+                .filter(duration -> duration != null)
+                .reduce(Duration::plus)
+                .orElse(Duration.ZERO);
+    }
+
+    private LocalDateTime endTime;
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public LocalDateTime calculateEndTime(List<Subtask> subtasks) {
+        return subtasks.stream()
+                .filter(subtask -> subtasksIds.contains(subtask.getId()))
+                .map(Subtask::getEndTime)
+                .filter(time -> time != null)
+                .max(LocalDateTime::compareTo)
+                .orElse(null);
     }
 
     @Override

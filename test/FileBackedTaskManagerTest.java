@@ -7,8 +7,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FileBackedTaskManagerTest {
-    private FileBackedTaskManager manager;
+public class FileBackedTaskManagerTest extends TaskManagerTest<FileBackedTaskManager> {
     private File testFile;
 
     @BeforeEach
@@ -27,8 +26,10 @@ public class FileBackedTaskManagerTest {
 
     @Test
     void testSaveAndLoadMultipleTasks() {
-        Task task1 = new Task("Task1", "Description1", TaskStatus.NEW);
-        Task task2 = new Task("Task2", "Description2", TaskStatus.IN_PROGRESS);
+        Task task1 = new Task("Task1", "Description1",
+                TaskStatus.NEW, null, null);
+        Task task2 = new Task("Task2", "Description2",
+                TaskStatus.IN_PROGRESS, null, null);
         manager.add(task1);
         manager.add(task2);
 
@@ -41,12 +42,13 @@ public class FileBackedTaskManagerTest {
 
     @Test
     void testSaveAndLoadMultipleTasksAndEpics() {
-        Task task = new Task("Task1", "Description1", TaskStatus.NEW);
+        Task task = new Task("Task1", "Description1", TaskStatus.NEW, null, null);
         Epic epic = new Epic("Epic1", "Description Epic1", TaskStatus.DONE);
 
         manager.add(epic);
 
-        Subtask subtask = new Subtask("Subtask1", "Description Subtask1", TaskStatus.DONE, epic.getId());
+        Subtask subtask = new Subtask("Subtask1", "Description Subtask1",
+                TaskStatus.DONE, epic.getId(), null, null);
 
         manager.add(task);
         manager.add(subtask);

@@ -5,7 +5,8 @@ class EpicTest {
 
     @Test
     void epicCannotBeItsOwnSubtask() {
-        Epic epic = new Epic("Получить высшее образование", "Диплом бакалавра и диплом магистра", TaskStatus.IN_PROGRESS);
+        Epic epic = new Epic("Получить высшее образование", "Диплом бакалавра и диплом магистра",
+                TaskStatus.IN_PROGRESS);
         epic.setId(1);
 
         assertThrows(IllegalArgumentException.class, () -> {

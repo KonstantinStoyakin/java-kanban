@@ -1,4 +1,9 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
     private final File file;
@@ -103,7 +108,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
         switch (type) {
             case TASK:
-                Task task = new Task(name, descriptions, status);
+                Task task = new Task(name, descriptions, status, null, null);
                 task.setId(id);
                 return task;
             case EPIC:
@@ -112,7 +117,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 return epic;
             case SUBTASK:
                 int epicId = Integer.parseInt(fields[5]);
-                Subtask subtask = new Subtask(name, descriptions, status, epicId);
+                Subtask subtask = new Subtask(name, descriptions, status, epicId, null, null);
                 subtask.setId(id);
                 return subtask;
             default:
@@ -139,7 +144,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Ошибка при загрузке файла", e);
+            throw new ManagerLoadException("Ошибка при загрузке файла", e);
         }
         return manager;
     }

@@ -2,8 +2,10 @@ public class Main {
     public static void main(String[] args) {
         InMemoryTaskManager manager = new InMemoryTaskManager();
 
-        Task firstTask = new Task("Позавтракать", "Приготовить омлет и сварить кофе", TaskStatus.NEW);
-        Task secondTask = new Task("Пообедать", "Сварить суп и налить компот", TaskStatus.NEW);
+        Task firstTask = new Task("Позавтракать", "Приготовить омлет и сварить кофе", TaskStatus.NEW,
+                null, null);
+        Task secondTask = new Task("Пообедать", "Сварить суп и налить компот", TaskStatus.NEW,
+                null, null);
 
         manager.add(firstTask);
         manager.add(secondTask);
@@ -16,10 +18,10 @@ public class Main {
 
         Subtask firstSubtask = new Subtask("Поступить в университет",
                 "Экономический факультет",
-                TaskStatus.DONE, firstEpic.getId());
+                TaskStatus.DONE, firstEpic.getId(), null, null);
         Subtask secondSubtask = new Subtask("Получить диплом бакалавра",
                 "Защитить диплом",
-                TaskStatus.IN_PROGRESS, firstEpic.getId());
+                TaskStatus.IN_PROGRESS, firstEpic.getId(), null, null);
 
         manager.add(firstSubtask);
         manager.add(secondSubtask);
