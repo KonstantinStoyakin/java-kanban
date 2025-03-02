@@ -1,3 +1,10 @@
+import ENUM.TaskStatus;
+import INTERFACE.TaskManager;
+import MANAGERS.InMemoryTaskManager;
+import TASK.Epic;
+import TASK.Subtask;
+import TASK.Task;
+
 public class Main {
     public static void main(String[] args) {
         InMemoryTaskManager manager = new InMemoryTaskManager();

@@ -1,3 +1,12 @@
+package MANAGERS;
+
+import ENUM.TaskStatus;
+import INTERFACE.HistoryManager;
+import INTERFACE.TaskManager;
+import TASK.Epic;
+import TASK.Subtask;
+import TASK.Task;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +30,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void add(Task task) {
+        System.out.println("Добавление задачи: " + task);
         if (isOverlapping(task)) {
             throw new IllegalArgumentException("Задача пересекается с уже существующей!");
         }

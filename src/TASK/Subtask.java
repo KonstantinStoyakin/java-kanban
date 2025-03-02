@@ -1,3 +1,8 @@
+package TASK;
+
+import ENUM.TaskStatus;
+import ENUM.TaskType;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -41,7 +46,7 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "Subtask{" +
+        return "TASK.Subtask{" +
                 "Id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", description='" + super.getDescription() + '\'' +

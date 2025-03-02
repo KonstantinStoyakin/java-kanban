@@ -1,3 +1,9 @@
+package INTERFACE;
+
+import TASK.Epic;
+import TASK.Subtask;
+import TASK.Task;
+
 import java.util.List;
 
 public interface TaskManager {
